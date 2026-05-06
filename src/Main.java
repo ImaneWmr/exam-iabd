@@ -46,5 +46,20 @@ void testAll(List<Trip> trips) {
         System.out.println("Meilleur trajet: rating = " + String.format("%.2f", best.get().rating()));
     }
     System.out.println();
+    // 4
+    Partie4 partie4 = new Partie4();
+    System.out.println("Partie 4: Traitement Parallèle ");
+    long seqStart = System.currentTimeMillis();
+    double seqRevenue = partie4.totalRevenueSequential(trips);
+    long seqTime = System.currentTimeMillis() - seqStart;
+    System.out.println("Revenu total (séquentiel): " + String.format("%.2f€", seqRevenue) +
+            " (temps: " + seqTime + "ms)");
+    long parStart = System.currentTimeMillis();
+    double parRevenue = partie4.totalRevenueParallel(trips);
+    long parTime = System.currentTimeMillis() - parStart;
+    System.out.println("Revenu total (parallèle): " + String.format("%.2f€", parRevenue) +
+            " (temps: " + parTime + "ms)");
 
+    System.out.println("Trajets par ville (parallèle): " + partie4.countByCityParallel(trips).size() + " villes");
+    System.out.println("Premium trips (prix > 30 et rating > 4): " + partie4.premiumTripsParallel(trips).size());
 }
