@@ -1,9 +1,28 @@
+import exo.Partie1;
+import exo.Partie2;
+import exo.Partie3;
+import exo.Partie4;
 import factory.TripFactory;
 import models.Trip;
 
-void main() {
-    List<Trip> trips = TripFactory.generateTrips(10000000);
+import java.util.List;
 
-    // appeler les méthodes des exos ici
-    // pour tester si ça marche bien, générer une liste de 10 éléments et afficher le résultat
+void main() {
+    //Teste avec une petite liste
+    System.out.println("TESTS AVEC PETITE LISTE (10 trajets)  \n");
+    List<Trip> smallTrips = TripFactory.generateTrips(10);
+    testAll(smallTrips);
+
+    //Teste avec la grande liste
+    System.out.println("\n=== TESTS AVEC GRANDE LISTE (10 millions de trajets) ===\n");
+    List<Trip> trips = TripFactory.generateTrips(10000000);
+    testAll(trips);
+}
+
+void testAll(List<Trip> trips) {
+    Partie1 partie1 = new Partie1();
+    System.out.println("Partie 1: Filtrage ");
+    System.out.println("Long and Expensive: " + partie1.longAndExpensiveTrips(trips).size() + " trajets");
+    System.out.println("Bad Trips (rating < 3): " + partie1.badTrips(trips).size() + " trajets");
+    System.out.println("Recent Trips: " + partie1.recentTrips(trips).size() + " trajets\n");
 }
