@@ -21,8 +21,16 @@ void main() {
 
 void testAll(List<Trip> trips) {
     Partie1 partie1 = new Partie1();
+    // 1 filtre
     System.out.println("Partie 1: Filtrage ");
     System.out.println("Long and Expensive: " + partie1.longAndExpensiveTrips(trips).size() + " trajets");
     System.out.println("Bad Trips (rating < 3): " + partie1.badTrips(trips).size() + " trajets");
     System.out.println("Recent Trips: " + partie1.recentTrips(trips).size() + " trajets\n");
+    // 2 Analyse & statistiques
+
+    Partie2 partie2 = new Partie2();
+    System.out.println("Partie 2: Analyse & Statistiques ");
+    System.out.println("Trajets par ville: " + partie2.countByCity(trips).size() + " villes");
+    System.out.println("Revenu par chauffeur: " + partie2.revenueByDriver(trips).size() + " chauffeurs");
+    System.out.println("Durée moyenne par ville: " + partie2.avgDurationByCity(trips).size() + " villes\n");
 }
