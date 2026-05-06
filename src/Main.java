@@ -33,4 +33,18 @@ void testAll(List<Trip> trips) {
     System.out.println("Trajets par ville: " + partie2.countByCity(trips).size() + " villes");
     System.out.println("Revenu par chauffeur: " + partie2.revenueByDriver(trips).size() + " chauffeurs");
     System.out.println("Durée moyenne par ville: " + partie2.avgDurationByCity(trips).size() + " villes\n");
+
+    Partie3 partie3 = new Partie3();
+    System.out.println("Partie 3: Tri & Recherche ");
+    var top10 = partie3.top10ExpensiveTrips(trips);
+    System.out.println("Top 10 les plus chers: " + top10.size() + " trajets");
+    if (!top10.isEmpty()) {
+        System.out.println("Prix du plus cher: " + String.format("%.2f€", top10.get(0).price()));
+    }
+    var best = partie3.bestTrip(trips);
+    if (best.isPresent()) {
+        System.out.println("Meilleur trajet: rating = " + String.format("%.2f", best.get().rating()));
+    }
+    System.out.println();
+
 }
